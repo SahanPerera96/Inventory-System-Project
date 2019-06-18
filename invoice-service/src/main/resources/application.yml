@@ -1,0 +1,38 @@
+
+#server:
+#  port: 8080
+  
+  
+
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/invoicedb?createDatabaseIfNotExist=true
+    username: root
+    password: 1qaz2wsx@
+
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    initialization-mode: always
+  jpa:
+    hibernate:
+      ddl-auto: none
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+
+    properties:
+      hibernate:
+        show_sql: true
+        format_sql: true
+
+#  application:
+#    name: item
+#    profiles:
+#     active: dev
+#     encrypt:
+#       key: web
+#       security:
+#              oauth2:
+#                resource:
+#                  token-info-uri: http://localhost:8090/oauth/check_token
+#                client:
+#                  client-id: web
+#                  client-secret: web
