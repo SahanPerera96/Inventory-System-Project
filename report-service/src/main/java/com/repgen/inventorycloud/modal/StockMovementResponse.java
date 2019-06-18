@@ -4,6 +4,7 @@ import java.util.List;
 
 public class StockMovementResponse{
   	 
+	
 	public String response;
 //	private String message;
 	public Stock stock;
@@ -43,6 +44,8 @@ public class StockMovementResponse{
 	public void setTransactionLogsRecived(List<TransactionLog> transactionLogsRecived) {
 		this.transactionLogsRecived = transactionLogsRecived;
 	}
+
+	
 	
 	
 	

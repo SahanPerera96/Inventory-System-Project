@@ -18,7 +18,13 @@ logging:
     org:
       hibernate: 
         type: tracel
-          
+        
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+                 
 #security:
 #  oauth2:
 #    resource:
