@@ -61,7 +61,7 @@ public class ItemControllerTest {
 		
 		Batch batch = new Batch();
 		batch.setId(1);
-		item.setBatch(batch);
+		//item.setBatch(batch);
 		
 		ObjectMapper objectMapper= new ObjectMapper();
 		String str= objectMapper.writeValueAsString(item);
@@ -84,7 +84,7 @@ public class ItemControllerTest {
 		
 		Batch batch = new Batch();
 		batch.setId(1);
-		item.setBatch(batch);
+	//	item.setBatch(batch);
 		
 		ObjectMapper objectMapper= new ObjectMapper();
 		String str= objectMapper.writeValueAsString(item);
@@ -105,7 +105,7 @@ public class ItemControllerTest {
 		item.setUom(uom);
 		Batch batch = new Batch();
 		batch.setId(1);
-		item.setBatch(batch);
+		//item.setBatch(batch);
 		ObjectMapper objectMapper= new ObjectMapper();
 		String str= objectMapper.writeValueAsString(item);
 		mockMvc.perform(MockMvcRequestBuilders.delete("/item/item")

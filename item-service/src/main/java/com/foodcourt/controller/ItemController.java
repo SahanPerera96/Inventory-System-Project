@@ -23,7 +23,7 @@ import javassist.tools.rmi.ObjectNotFoundException;
 
 @RestController
 @CrossOrigin
-@RequestMapping(value="item")
+@RequestMapping(value="item/")
 public class ItemController {
 
 	@Autowired
