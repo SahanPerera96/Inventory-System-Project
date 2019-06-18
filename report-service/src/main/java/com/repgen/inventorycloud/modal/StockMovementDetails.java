@@ -18,6 +18,9 @@ public class StockMovementDetails {
 	Double averageIssueQuantity;
 	Double averageRevivedQuantity;
 	
+	public String itemName;
+	public String uomName;
+	public String brandName;
 	public String getResponse() {
 		return response;
 	}
@@ -96,5 +99,27 @@ public class StockMovementDetails {
 		this.averageRevivedQuantity = averageRevivedQuantity;
 	}
 	
-	
+	public String getItemName() {
+		return itemName;
+	}
+
+	public void setItemName(String itemName) {
+		this.itemName = itemName;
+	}
+
+	public String getUomName() {
+		return uomName;
+	}
+
+	public void setUomName(String uomName) {
+		this.uomName = uomName;
+	}
+
+	public String getBrandName() {
+		return brandName;
+	}
+
+	public void setBrandName(String brandName) {
+		this.brandName = brandName;
+	}
 }

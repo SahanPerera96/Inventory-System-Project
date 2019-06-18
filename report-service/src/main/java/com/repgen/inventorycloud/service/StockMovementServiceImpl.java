@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import com.repgen.inventorycloud.exception.MessageBodyConstraintViolationException;
+import com.repgen.inventorycloud.hystrix.StockMovementResponseCommand;
 import com.repgen.inventorycloud.modal.StockMovementDetails;
 import com.repgen.inventorycloud.modal.StockMovementResponse;
 import com.repgen.inventorycloud.modal.TransactionEntries;
@@ -38,21 +39,18 @@ public class StockMovementServiceImpl implements StockMovementService{
 //		OAuth2AuthenticationDetails details =(OAuth2AuthenticationDetails)
 //				SecurityContextHolder.getContext().getAuthentication().getDetails();
 //		httpHeaders.add("Authorization","bearer".concat(details.getTokenValue()));
+		StockMovementResponseCommand movementResponseCommand = new StockMovementResponseCommand(itemId,uomId,brandId, httpHeaders, restTemplate);
+		StockMovementResponse response = movementResponseCommand.execute();
 		
-		ResponseEntity<StockMovementResponse>responseEntity;
-		HttpEntity<String>entity = new HttpEntity<>("",httpHeaders);
-		responseEntity = restTemplate.exchange("http://stock-service/stock/openstock/master"
-				.concat(String.valueOf("/"+brandId+"/"+itemId+"/"+uomId)),HttpMethod.GET,entity,StockMovementResponse.class);
-//		Employee employee2 = optional.get();
-//		employee2.setAllocation(responseEntity.getBody());
-		StockMovementResponse response = responseEntity.getBody();
 		
 		if(response.response.equals("failed")) {
+			System.out.println("Failed by here exception");
 			throw new MessageBodyConstraintViolationException("Stock log entry not available.");
 		}else {
 			DecimalFormat roundOffFomatter = new DecimalFormat("#.##");
 			StockMovementDetails movementDetails = new StockMovementDetails();
 			movementDetails.setResponse("success");
+			
 			movementDetails.setOpenStockDate(response.getStock().getDate());
 			Double openStockQuantity = response.getStock().getStockDetails().get(0).getQuantity();
 			movementDetails.setOpenStockQuantity(openStockQuantity);
