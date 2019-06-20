@@ -2,8 +2,8 @@
 INSERT INTO `stakeholder`.`address` (`address_line1`, `address_line2`, `city`, `postal_code`) VALUES ('kotikawatta', 'Angoda', 'Colombo', '11000');
 INSERT INTO `stakeholder`.`address` (`address_line1`, `address_line2`, `city`, `postal_code`) VALUES ('polonnaruwa', 'Aralaganwila', 'Polonnaruwa', '51100');
 INSERT INTO `stakeholder`.`address` (`address_line1`, `address_line2`, `city`, `postal_code`) VALUES ('kekirawa', 'Anuradhapura', 'Anuradhapura', '50100');
-INSERT INTO `stakeholder`.`address` (`address_line1`, `address_line2`, `city`, `postal_code`) VALUES ('kondawil', 'Jaffna', 'Jaffna', '41100');
-INSERT INTO `stakeholder`.`address` (`address_line1`, `address_line2`, `city`, `postal_code`) VALUES ('Alawwa', 'Kurunegala', 'Kurunegala', '21141');
+--INSERT INTO `stakeholder`.`address` (`address_line1`, `address_line2`, `city`, `postal_code`) VALUES ('kondawil', 'Jaffna', 'Jaffna', '41100');
+--INSERT INTO `stakeholder`.`address` (`address_line1`, `address_line2`, `city`, `postal_code`) VALUES ('Alawwa', 'Kurunegala', 'Kurunegala', '21141');
 
 --Insert category data
 INSERT INTO `stakeholder`.`category` (`point_range`, `type`) VALUES ('500', 'Silver');
