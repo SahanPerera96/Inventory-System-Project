@@ -30,7 +30,7 @@ put those jar files into the JRE security folder and restart the application.
                     config:
                       server:
                         git:
-                          uri: https://github.com/Tharinduyasarathna27/spring-cloud-config-store
+                          uri: https://github.com/PasinduSandakelum/inventory-system-config-store
                           search-paths:
                             - '*service'
 
