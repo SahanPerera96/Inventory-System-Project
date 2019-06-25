@@ -39,11 +39,4 @@ public class StockMovementResponseCommand extends HystrixCommand<StockMovementRe
 		return responseEntity.getBody();
 	};
 	
-	@Override
-	protected StockMovementResponse getFallback() {
-		System.out.println("getFallback called ");
-		StockMovementResponse response = new StockMovementResponse();
-		response.setResponse("failed");
-		return response;
-	}
 }
