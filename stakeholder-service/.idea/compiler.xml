@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="discovery-service" />
+        <module name="invoice-service" />
+        <module name="report-service" />
+        <module name="stake-holder" />
+        <module name="item-service" />
+        <module name="stock-service" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="discovery-service" target="1.8" />
+      <module name="invoice-service" target="1.8" />
+      <module name="item-service" target="1.8" />
+      <module name="report-service" target="1.8" />
+      <module name="stake-holder" target="1.8" />
+      <module name="stock-service" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="discovery-service" options="-parameters" />
+      <module name="invoice-service" options="-parameters" />
+      <module name="item-service" options="-parameters" />
+      <module name="report-service" options="-parameters" />
+      <module name="stake-holder" options="-parameters" />
+      <module name="stock-service" options="-parameters" />
+    </option>
+  </component>
+</project>
