@@ -10,6 +10,8 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.oauth2.provider.authentication.OAuth2AuthenticationDetails;
 //import org.springframework.security.core.context.SecurityContextHolder;
 //import org.springframework.security.oauth2.provider.authentication.OAuth2AuthenticationDetails;
 import org.springframework.stereotype.Service;
@@ -39,11 +41,18 @@ public class StockMovementServiceImpl implements StockMovementService{
 //		OAuth2AuthenticationDetails details =(OAuth2AuthenticationDetails)
 //				SecurityContextHolder.getContext().getAuthentication().getDetails();
 //		httpHeaders.add("Authorization","bearer".concat(details.getTokenValue()));
-		StockMovementResponseCommand movementResponseCommand = new StockMovementResponseCommand(itemId,uomId,brandId, httpHeaders, restTemplate);
-		StockMovementResponse response = movementResponseCommand.execute();
+		
+		StockMovementResponse response;
+		try {
+			StockMovementResponseCommand movementResponseCommand = new StockMovementResponseCommand(itemId,uomId,brandId, httpHeaders, restTemplate);
+			 response = movementResponseCommand.execute();	
+		}catch(Exception ex) {
+			throw new MessageBodyConstraintViolationException("remote service fail");
+		}
 		
 		
-		if(response.response.equals("failed")) {
+		
+		if(response.getResponse().equals("failed")) {
 			System.out.println("Failed by here exception");
 			throw new MessageBodyConstraintViolationException("Stock log entry not available.");
 		}else {

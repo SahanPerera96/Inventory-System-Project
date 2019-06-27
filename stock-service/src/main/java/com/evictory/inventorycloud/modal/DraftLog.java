@@ -13,6 +13,8 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import com.evictory.inventorycloud.exception.IntegerNotPassedException;
+
 
 @Entity
 public class DraftLog {
@@ -56,8 +58,19 @@ public class DraftLog {
 		return userId;
 	}
 
-	public void setUserId(Integer userId) {
-		this.userId = userId;
+	public void setUserId(String userId) {
+		 Integer usid = null;
+//		try {
+             usid = Integer.parseInt(userId);
+//        } catch (NumberFormatException e) {
+//        	System.out.println("String value passed");
+//           throw new  MessageBodyConstraintViolationException("String value passed");
+//        }
+//		if(usid == null) {
+//			System.out.println("String value passed 2");
+//	        throw new RuntimeException("Integer type parameter required");
+//		}
+		this.userId = usid;
 	}
 
 	public String getReason() {

@@ -104,7 +104,7 @@ public class StockServiceImpl implements StockService {
 			Optional<DraftLog> optional = draftLogRepository.findById(id);
 			DraftLog update = optional.get();
 			update.setReason(draftLog.getReason());
-			update.setUserId(draftLog.getUserId());
+			update.setUserId(draftLog.getUserId().toString());
 
 			draftLogRepository.save(update);
 			return true;
