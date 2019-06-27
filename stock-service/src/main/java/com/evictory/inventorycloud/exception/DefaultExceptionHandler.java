@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
-@ControllerAdvice
-@RestController
+//@ControllerAdvice
+//@RestController
 public class DefaultExceptionHandler extends ResponseEntityExceptionHandler{
 
 	public final String responseFailed = "Failed";
@@ -40,6 +40,13 @@ public class DefaultExceptionHandler extends ResponseEntityExceptionHandler{
 		 
 	    return new ResponseEntity<>(errorMessage, HttpStatus.BAD_REQUEST);
 	  }
+	 
+//	 @ExceptionHandler(RuntimeException.class)
+//	  public final ResponseEntity<?> integerNotFound(IntegerNotPassedException ex) {
+//		 ErrorMessage errorMessage = new ErrorMessage(ex.getMessage(), responseFailed);
+//		 
+//	    return new ResponseEntity<>(errorMessage, HttpStatus.BAD_REQUEST);
+//	  }
 	 
 	 public class ErrorMessage {
 			
