@@ -23,14 +23,16 @@ import javassist.tools.rmi.ObjectNotFoundException;
 
 @RestController
 @CrossOrigin
-@RequestMapping(value="item/")
+@RequestMapping(value="item")
 public class ItemController {
 
 	@Autowired
 	ItemService itemService;
 	
 	@RequestMapping(method = RequestMethod.POST)
-	public Item save(@RequestBody Item item){
+	public Item save(@RequestBody Item item)
+	{
+		System.out.println("item save");
 			return itemService.save(item);	
 	}
 	
