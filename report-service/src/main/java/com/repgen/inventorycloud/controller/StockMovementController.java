@@ -37,4 +37,13 @@ public class StockMovementController {
 			return stockMovementServiceImpl.fetchdetails( itemId, uomId, brandId);
 
 	}
+	
+	@RequestMapping(value = "/stockmoment/pdf", method = RequestMethod.GET) 
+	// generate pdf
+	
+	public ResponseEntity<?> generatePDFDoc( ) { 
+		
+			return stockMovementServiceImpl.generateReport();
+
+	}
 }

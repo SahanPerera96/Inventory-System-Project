@@ -1,19 +1,21 @@
 package com.repgen.inventorycloud.service;
 
+import java.io.ByteArrayInputStream;
+import java.io.FileNotFoundException;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.oauth2.provider.authentication.OAuth2AuthenticationDetails;
 //import org.springframework.security.core.context.SecurityContextHolder;
 //import org.springframework.security.oauth2.provider.authentication.OAuth2AuthenticationDetails;
+
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -23,6 +25,8 @@ import com.repgen.inventorycloud.modal.StockMovementDetails;
 import com.repgen.inventorycloud.modal.StockMovementResponse;
 import com.repgen.inventorycloud.modal.TransactionEntries;
 import com.repgen.inventorycloud.modal.TransactionLog;
+import com.repgen.inventorycloud.pdfgen.GeneratePdfReport;
+import org.springframework.http.MediaType;
 
 
 
@@ -33,7 +37,7 @@ public class StockMovementServiceImpl implements StockMovementService{
 	RestTemplate restTemplate;
 	
 	@Override
-	public ResponseEntity<?> fetchdetails( Integer itemId, Integer uomId, Integer brandId) {
+	public ResponseEntity<StockMovementDetails> fetchdetails( Integer itemId, Integer uomId, Integer brandId) {
 		
 //		RestTemplate restTemplate = new RestTemplate();
 		HttpHeaders httpHeaders = new HttpHeaders();
@@ -110,10 +114,37 @@ public class StockMovementServiceImpl implements StockMovementService{
 			movementDetails.setAverageRevivedQuantity(averageRevivedQuantity);
 			
 			return ResponseEntity.status(HttpStatus.ACCEPTED).body(movementDetails);
+			
 		}
 		
 		
 //		return responseEntity;
 	}
 
+	
+	
+	@Override
+	public ResponseEntity<?> generateReport() {
+		 ByteArrayInputStream bis = null;
+		 ResponseEntity<StockMovementDetails> details= fetchdetails(1, 1, 1);
+		 StockMovementDetails stockMovementDetails = details.getBody();
+			try {
+				bis = GeneratePdfReport.citiesReport(stockMovementDetails);
+			} catch (FileNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+	        HttpHeaders headers = new HttpHeaders();
+//	        headers.add("Content-Disposition", "inline; filename=citiesreport.pdf");
+
+	        return ResponseEntity
+	                .ok()
+	                .headers(headers)
+	                .contentType(MediaType.APPLICATION_PDF)
+	                .body(new InputStreamResource(bis));
+	}
+
+	
+	
 }
