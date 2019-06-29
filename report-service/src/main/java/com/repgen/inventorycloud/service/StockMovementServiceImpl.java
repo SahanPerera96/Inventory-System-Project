@@ -37,7 +37,7 @@ public class StockMovementServiceImpl implements StockMovementService{
 	RestTemplate restTemplate;
 	
 	@Override
-	public ResponseEntity<StockMovementDetails> fetchdetails( Integer itemId, Integer uomId, Integer brandId) {
+	public ResponseEntity<StockMovementDetails> fetchdetails( Integer itemId) { // , Integer uomId, Integer brandId
 		
 //		RestTemplate restTemplate = new RestTemplate();
 		HttpHeaders httpHeaders = new HttpHeaders();
@@ -48,8 +48,8 @@ public class StockMovementServiceImpl implements StockMovementService{
 		
 		StockMovementResponse response;
 		try {
-			StockMovementResponseCommand movementResponseCommand = new StockMovementResponseCommand(itemId,uomId,brandId, httpHeaders, restTemplate);
-			 response = movementResponseCommand.execute();	
+			StockMovementResponseCommand movementResponseCommand = new StockMovementResponseCommand(itemId, httpHeaders, restTemplate);
+			 response = movementResponseCommand.execute();	// itemId,uomId,brandId,
 		}catch(Exception ex) {
 			throw new MessageBodyConstraintViolationException("remote service fail");
 		}

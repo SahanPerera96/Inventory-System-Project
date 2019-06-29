@@ -15,10 +15,10 @@ create table CurrentStock (
     ); 
 create table DraftDetails (
        id integer not null auto_increment,
-        brandId integer not null,
+       
         itemId integer not null,
         quantity double precision not null,
-        uomId integer not null,
+        
         OSid integer,
         primary key (id)
     ); 
@@ -38,10 +38,10 @@ create table Stock (
     ); 
 create table StockDetails (
        id integer not null auto_increment,
-        brandId integer not null,
+       
         itemId integer not null,
         quantity double precision not null,
-        uomId integer not null,
+        
         OSid integer,
         primary key (id)
     );

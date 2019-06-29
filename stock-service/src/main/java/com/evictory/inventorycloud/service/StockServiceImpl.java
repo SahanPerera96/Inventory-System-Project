@@ -61,11 +61,12 @@ public class StockServiceImpl implements StockService {
 		} else {
 			List<DraftDetails> details = draftLog.getDraftDetails();
 			for (int i = 0; i < details.size(); i++) {
-				if (details.get(i).getItemId() == null || details.get(i).getQuantity() == null
-						|| details.get(i).getBrandId() == null || details.get(i).getUomId() == null) {
+				if (details.get(i).getItemId() == null || details.get(i).getQuantity() == null) {
+//						|| details.get(i).getBrandId() == null || details.get(i).getUomId() == null) {
 					throw new MessageBodyConstraintViolationException("Please provide all open stock details.");
-				} else if (details.get(i).getItemId() < 1 || details.get(i).getBrandId() < 1
-						|| details.get(i).getUomId() < 1) {
+				} else if (details.get(i).getItemId() < 1 ) {
+						
+//				|| details.get(i).getBrandId() < 1 || details.get(i).getUomId() < 1) {
 					throw new MessageBodyConstraintViolationException("Please provide all open stock details.");
 				}
 			}
@@ -166,8 +167,8 @@ public class StockServiceImpl implements StockService {
 			DraftDetails draftDetails = optional.get();
 			draftDetails.setItemId(details.getItemId());
 			draftDetails.setQuantity(details.getQuantity());
-			draftDetails.setBrandId(details.getBrandId());
-			draftDetails.setUomId(details.getUomId());
+//			draftDetails.setBrandId(details.getBrandId());
+//			draftDetails.setUomId(details.getUomId());
 
 			draftDetailsRepository.save(draftDetails);
 			return true;
@@ -247,10 +248,10 @@ public class StockServiceImpl implements StockService {
 
 			for (int i = 0; i < draftLog.getDraftDetails().size(); i++) {
 				StockDetails details = new StockDetails();
-				details.setBrandId(draftLog.getDraftDetails().get(i).getBrandId());
+//				details.setBrandId(draftLog.getDraftDetails().get(i).getBrandId());
 				details.setItemId(draftLog.getDraftDetails().get(i).getItemId());
 				details.setQuantity(draftLog.getDraftDetails().get(i).getQuantity());
-				details.setUomId(draftLog.getDraftDetails().get(i).getUomId());
+//				details.setUomId(draftLog.getDraftDetails().get(i).getUomId());
 				stockDetails.add(details);
 			}
 			stock.setStockDetails(stockDetails);
@@ -373,7 +374,7 @@ public class StockServiceImpl implements StockService {
 	}
 
 	@Override
-	public ResponseEntity<?> fetchStockMovementReport(Integer itemId, Integer uomId, Integer brandId) {
+	public ResponseEntity<?> fetchStockMovementReport(Integer itemId) {// , Integer uomId, Integer brandId
 		
 		final DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyyMMdd HH:mm:ss");
 		final DateFormat dateFormat = new SimpleDateFormat("yyyyMMdd HH:mm:ss");
@@ -434,8 +435,9 @@ public class StockServiceImpl implements StockService {
 				List<TransactionDetails> transactionDetails = newFilteredAfterDates.get(i).getTransactionDetails();
 				
 				for (int j = 0; j < transactionDetails.size(); j++) {
-					if(transactionDetails.get(j).getItemId() == itemId && transactionDetails.get(j).getUomId() == uomId 
-							&& transactionDetails.get(j).getBrandId() == brandId ) {
+					if(transactionDetails.get(j).getItemId() == itemId) {
+//							&& transactionDetails.get(j).getUomId() == uomId 
+//							&& transactionDetails.get(j).getBrandId() == brandId ) {
 						TransactionLog transactionLog = new TransactionLog();
 						List<TransactionDetails> details = new ArrayList<TransactionDetails>();
 						transactionLog.setId(newFilteredAfterDates.get(i).getId());
@@ -472,9 +474,9 @@ public class StockServiceImpl implements StockService {
 				stock.setReason(lastOpenStock.getReason());
 				stock.setUserId(lastOpenStock.getUserId());
 				
-				if(lastOpenStock.getStockDetails().get(j).getItemId() == itemId 
-						&& lastOpenStock.getStockDetails().get(j).getUomId() == uomId 
-						&& lastOpenStock.getStockDetails().get(j).getBrandId() == brandId ) {
+				if(lastOpenStock.getStockDetails().get(j).getItemId() == itemId  ) {
+//						&& lastOpenStock.getStockDetails().get(j).getUomId() == uomId 
+//						&& lastOpenStock.getStockDetails().get(j).getBrandId() == brandId ) {
 //					Stock stock  = new Stock();
 					List<StockDetails> details = new ArrayList<StockDetails>();
 //					stock.setId(lastOpenStock.getId());

@@ -20,10 +20,10 @@ public class DraftDetails {
    
     Integer itemId;
  
-    Integer uomId;
-    
-    
-    Integer brandId;
+//    Integer uomId;
+//    
+//    
+//    Integer brandId;
 
  
     Double quantity;
@@ -47,13 +47,13 @@ public class DraftDetails {
 		this.itemId = itemId;
 	}
 
-	public Integer getUomId() {
-		return uomId;
-	}
-
-	public void setUomId(Integer uomId) {
-		this.uomId = uomId;
-	}
+//	public Integer getUomId() {
+//		return uomId;
+//	}
+//
+//	public void setUomId(Integer uomId) {
+//		this.uomId = uomId;
+//	}
 
 	public void setQuantity(Double quantity) {
 		this.quantity = quantity;
@@ -63,13 +63,13 @@ public class DraftDetails {
 		return quantity;
 	}
 
-	public Integer getBrandId() {
-		return brandId;
-	}
-
-	public void setBrandId(Integer brandId) {
-		this.brandId = brandId;
-	}
+//	public Integer getBrandId() {
+//		return brandId;
+//	}
+//
+//	public void setBrandId(Integer brandId) {
+//		this.brandId = brandId;
+//	}
 
 	public DraftLog getDraftLog() {
 		return draftLog;

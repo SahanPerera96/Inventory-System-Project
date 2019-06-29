@@ -41,6 +41,6 @@ public interface StockService {
 	
 	Stock fetchMasterLastEntry(String date); // fetch  the last entry on open stock by date 
 	
-	ResponseEntity<?> fetchStockMovementReport(Integer itemId,Integer uomId,Integer brandId);
+	ResponseEntity<?> fetchStockMovementReport(Integer itemId); //,Integer uomId,Integer brandId
 
 }

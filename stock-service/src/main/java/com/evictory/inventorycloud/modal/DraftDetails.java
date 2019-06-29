@@ -22,13 +22,13 @@ public class DraftDetails {
     @Min(value = 1 ,message="valid item information")
     Integer itemId;
     
-    @NotNull(message = "valid UOM information")
-    @Min(value = 1 ,message="valid UOM information")
-    Integer uomId;
-    
-    @NotNull(message = "valid brand information")
-    @Min(value = 1 ,message="valid brand information")
-    Integer brandId;
+//    @NotNull(message = "valid UOM information")
+//    @Min(value = 1 ,message="valid UOM information")
+//    Integer uomId;
+//    
+//    @NotNull(message = "valid brand information")
+//    @Min(value = 1 ,message="valid brand information")
+//    Integer brandId;
 
     @NotNull(message = "quantity")
     @Min(value = 0 ,message="valid quantity")
@@ -55,13 +55,13 @@ public class DraftDetails {
 		this.itemId = itemId;
 	}
 
-	public Integer getUomId() {
-		return uomId;
-	}
-
-	public void setUomId(Integer uomId) {
-		this.uomId = uomId;
-	}
+//	public Integer getUomId() {
+//		return uomId;
+//	}
+//
+//	public void setUomId(Integer uomId) {
+//		this.uomId = uomId;
+//	}
 
 	public void setQuantity(Double quantity) {
 		this.quantity = quantity;
@@ -71,13 +71,13 @@ public class DraftDetails {
 		return quantity;
 	}
 
-	public Integer getBrandId() {
-		return brandId;
-	}
-
-	public void setBrandId(Integer brandId) {
-		this.brandId = brandId;
-	}
+//	public Integer getBrandId() {
+//		return brandId;
+//	}
+//
+//	public void setBrandId(Integer brandId) {
+//		this.brandId = brandId;
+//	}
 
 	public DraftLog getDraftLog() {
 		return draftLog;

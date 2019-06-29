@@ -41,7 +41,7 @@ public class ItemController {
 		return itemService.fetchAll();
 	}
 	
-	@RequestMapping(value="{id}",method = RequestMethod.GET)
+	@RequestMapping(value="/{id}",method = RequestMethod.GET)
 	public ResponseEntity<Item> fetch(@PathVariable Long id) {
 				return ResponseEntity.ok(itemService.fetchOne(id));	
 	}
@@ -51,27 +51,27 @@ public class ItemController {
 				return ResponseEntity.ok(itemService.update(item));	
 	}
 	
-	@RequestMapping( value = "{id}" , method = RequestMethod.DELETE)
+	@RequestMapping( value = "/{id}" , method = RequestMethod.DELETE)
 	void delete(@PathVariable Long id) {
 		itemService.delete(id);
 	}
 	
-	@RequestMapping(value = "critical" ,method = RequestMethod.GET)
+	@RequestMapping(value = "/critical" ,method = RequestMethod.GET)
 	public List<Item> critical(){
 		return itemService.critical();
 	}
 	
-	@RequestMapping(value = "{id}/uom" ,method = RequestMethod.GET)
+	@RequestMapping(value = "/{id}/uom" ,method = RequestMethod.GET)
 	public ResponseEntity<UOM> uom(@PathVariable Long id){
 		return ResponseEntity.ok(itemService.fetchOne(id).getUom());
 	}
 	
-	@RequestMapping(value = "{id}/brand" ,method = RequestMethod.GET)
+	@RequestMapping(value = "/{id}/brand" ,method = RequestMethod.GET)
 	public ResponseEntity<Brand> brand(@PathVariable Long id){
 		return ResponseEntity.ok(itemService.fetchOne(id).getBrand());
 	}
 	
-	@RequestMapping(value="name" ,method = RequestMethod.GET)
+	@RequestMapping(value="/name" ,method = RequestMethod.GET)
 	public ResponseEntity<Item> findByName() {
 		return ResponseEntity.ok(itemService.findByName("Mancheezzzgg"));
 	}

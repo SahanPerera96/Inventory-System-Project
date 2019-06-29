@@ -15,17 +15,17 @@ import com.repgen.inventorycloud.modal.StockMovementResponse;
 
 public class StockMovementResponseCommand extends HystrixCommand<StockMovementResponse>{
 
-	Integer brandId;
+//	Integer brandId;
 	Integer itemId;
-	Integer uomId;
+//	Integer uomId;
 	HttpHeaders httpHeaders;
 	RestTemplate restTemplate;
 	
-	public StockMovementResponseCommand(Integer brandId, Integer itemId, Integer uomId, HttpHeaders httpHeaders, RestTemplate restTemplate) {
-		super(HystrixCommandGroupKey.Factory.asKey("default"));
-		this.brandId= brandId;
+	public StockMovementResponseCommand( Integer itemId, HttpHeaders httpHeaders, RestTemplate restTemplate) {
+		super(HystrixCommandGroupKey.Factory.asKey("default")); // Integer brandId, Integer itemId, Integer uomId
+//		this.brandId= brandId;
 		this.itemId= itemId;
-		this.uomId= uomId;
+//		this.uomId= uomId;
 		this.httpHeaders = httpHeaders;
 		this.restTemplate = restTemplate;
 	}
@@ -34,8 +34,8 @@ public class StockMovementResponseCommand extends HystrixCommand<StockMovementRe
 		ResponseEntity<StockMovementResponse>responseEntity;
 		HttpEntity< String> entity = new HttpEntity<>("",httpHeaders);
 		responseEntity = restTemplate.exchange("http://stock-service/stock/openstock/master"
-				.concat(String.valueOf("/"+brandId+"/"+itemId+"/"+uomId)),HttpMethod.GET,entity,StockMovementResponse.class);
-		System.out.println("succes got details");
+				.concat(String.valueOf("/"+itemId)),HttpMethod.GET,entity,StockMovementResponse.class);
+		System.out.println("succes got details"); // "/"+brandId+"/"+itemId+"/"+uomId
 		return responseEntity.getBody();
 	};
 	

@@ -15,29 +15,22 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 public class StockDetails {
 	
-	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+	
     Integer id;
     
-    @NotNull(message = "valid item information")
-    @Min(value = 1 ,message="valid item information")
+   
     Integer itemId;
     
-    @NotNull(message = "valid UOM information")
-    @Min(value = 1 ,message="valid UOM information")
-    Integer uomId;
-    
-    @NotNull(message = "valid brand information")
-    @Min(value = 1 ,message="valid brand information")
-    Integer brandId;
+   
+//    Integer uomId;
+//    
+//    
+//    Integer brandId;
 
-    @NotNull(message = "quantity")
-    @Min(value = 0 ,message="valid quantity")
+   
     Double quantity;
 
-    @ManyToOne
-    @JoinColumn(name = "OSid")
-    @JsonIgnore
+  
     Stock stock;
 
 	public Integer getId() {
@@ -56,13 +49,13 @@ public class StockDetails {
 		this.itemId = itemId;
 	}
 
-	public Integer getUomId() {
-		return uomId;
-	}
-
-	public void setUomId(Integer uomId) {
-		this.uomId = uomId;
-	}
+//	public Integer getUomId() {
+//		return uomId;
+//	}
+//
+//	public void setUomId(Integer uomId) {
+//		this.uomId = uomId;
+//	}
 
 	public void setQuantity(Double quantity) {
 		this.quantity = quantity;
@@ -73,13 +66,13 @@ public class StockDetails {
 		return quantity;
 	}
 
-	public Integer getBrandId() {
-		return brandId;
-	}
-
-	public void setBrandId(Integer brandId) {
-		this.brandId = brandId;
-	}
+//	public Integer getBrandId() {
+//		return brandId;
+//	}
+//
+//	public void setBrandId(Integer brandId) {
+//		this.brandId = brandId;
+//	}
 
 
 	public Stock getStock() {
